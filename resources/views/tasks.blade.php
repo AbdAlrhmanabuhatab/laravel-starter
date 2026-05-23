@@ -1,211 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Task List</title>
+    <meta charset="UTF-8">
+    <title>Task List</title>
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #333;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            color: #222;
+        }
 
-    .navbar {
-      height: 50px;
-      background: #f8f8f8;
-      border-bottom: 1px solid #eee;
-    }
+        .navbar {
+            height: 64px;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
 
-    .navbar h2 {
-      margin: 0;
-      padding: 13px 0 0 110px;
-      font-size: 20px;
-      font-weight: 400;
-      color: #111;
-    }
+        .navbar h2 {
+            width: 820px;
+            margin: 0 auto;
+            padding-top: 18px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+        }
 
-    .navbar span {
-      color: #f1c40f;
-    }
+        .navbar span {
+            color: #f59e0b;
+        }
 
-    .container {
-      width: 820px;
-      margin: 25px auto;
-    }
+        .container {
+            width: 820px;
+            margin: 35px auto;
+        }
 
-    .panel {
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 22px;
-      overflow: hidden;
-      background: white;
-    }
+        .panel {
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+        }
 
-    .panel-heading {
-      background: #f5f5f5;
-      border-bottom: 1px solid #ddd;
-      padding: 11px 15px;
-      font-size: 16px;
-    }
+        .panel-heading {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 18px 22px;
+            font-size: 18px;
+            font-weight: 700;
+        }
 
-    .panel-body {
-      padding: 18px 15px 15px;
-    }
+        .panel-body {
+            padding: 22px;
+        }
 
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 9px;
-      font-size: 14px;
-    }
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 9px;
+            font-size: 14px;
+        }
 
-    input {
-      width: 100%;
-      height: 34px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-sizing: border-box;
-      font-size: 15px;
-      padding: 6px 10px;
-      margin-bottom: 15px;
-    }
+        input {
+            width: 100%;
+            height: 44px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 15px;
+            padding: 8px 14px;
+            margin-bottom: 15px;
+            outline: none;
+        }
 
-    .btn-add {
-      background: #0d6efd;
-      color: white;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 4px;
-      font-size: 15px;
-      cursor: pointer;
-    }
+        input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+        }
 
-    .btn-add i {
-      margin-right: 7px;
-    }
+        .btn-add,
+        .btn-delete,
+        .btn--info,
+        .btn-cancel {
+            color: white;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 15px;
-    }
+        .btn-add {
+            background: #2563eb;
+        }
 
-    th {
-      text-align: left;
-      padding: 12px 8px;
-      border-bottom: 2px solid #eee;
-    }
+        .btn-delete {
+            background: #ef4444;
+        }
 
-    td {
-      padding: 9px 8px;
-    }
+        .btn--info {
+            background: #0ea5e9;
+        }
 
-    tbody tr:nth-child(odd) {
-      background: #f4f4f4;
-    }
+        .btn-cancel {
+            background: #6b7280;
+            margin-left: 8px;
+        }
 
-    .btn-delete {
-      background: #ef4444;
-      color: white;
-      border: none;
-      padding: 9px 13px;
-      border-radius: 4px;
-      font-size: 15px;
-      cursor: pointer;
-    }
+        .btn-add:hover {
+            background: #1d4ed8;
+        }
 
-    .btn-delete i {
-      margin-right: 6px;
-    }
-  </style>
+        .btn-delete:hover {
+            background: #dc2626;
+        }
+
+        .btn--info:hover {
+            background: #0284c7;
+        }
+
+        .btn-cancel:hover {
+            background: #4b5563;
+        }
+
+        .btn-add i,
+        .btn-delete i,
+        .btn--info i,
+        .btn-cancel i {
+            margin-right: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        th {
+            text-align: left;
+            padding: 14px 12px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #6b7280;
+        }
+
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        th:last-child,
+        td:last-child {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .d-inline,
+        .action-form {
+            display: inline-block;
+        }
+
+        .action-form {
+            margin-left: 8px;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #777;
+            padding: 25px;
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="navbar">
-    <h2>Task <span>List</span></h2>
-  </div>
-
-  <div class="container">
-
-    <div class="panel">
-      <div class="panel-heading">New Task</div>
-
-      <div class="panel-body">
-        <form action="{{ url('create') }}" method="POST">
-          @csrf
-
-          <label for="task-name">Task</label>
-
-          <input
-            type="text"
-            name="name"
-            id="task-name"
-          />
-
-          <button type="submit" class="btn-add">
-            <i class="fa-solid fa-plus"></i>
-            Add Task
-          </button>
-        </form>
-      </div>
+    <div class="navbar">
+        <h2>Task <span>List</span></h2>
     </div>
 
-    <div class="panel">
-      <div class="panel-heading">Current Tasks</div>
-      <div class="panel-body">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 35%;">Task</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+    <div class="container">
 
-          <tbody>
-            <tr>
-              <td>Task 1</td>
-              <td>
-                <button class="btn-delete">
-                  <i class="fa-solid fa-trash"></i>
-                  Delete
-                </button>
-              </td>
-            </tr>
+        <div class="panel">
+            <div class="panel-heading">
+                @if (isset($task))
+                    Update Task
+                @else
+                    New Task
+                @endif
+            </div>
 
-            <tr>
-              <td>Task 2</td>
-              <td>
-                <button class="btn-delete">
-                  <i class="fa-solid fa-trash"></i>
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <div class="panel-body">
+                <form
+                    action="{{ isset($task) ? url('update') : url('create') }}"
+                    method="POST"
+                >
+                    @csrf
 
-            <tr>
-              <td>Task 3</td>
-              <td>
-                <button class="btn-delete">
-                  <i class="fa-solid fa-trash"></i>
-                  Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
+                    @if (isset($task))
+                        <input type="hidden" name="id" value="{{ $task->id }}">
+                    @endif
 
-        </table>
-      </div>
+                    <label for="task-name">Task</label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        id="task-name"
+                        value="{{ isset($task) ? $task->name : old('name') }}"
+                        required
+                    >
+
+                    <button type="submit" class="btn-add">
+                        @if (isset($task))
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Update Task
+                        @else
+                            <i class="fa-solid fa-plus"></i>
+                            Add Task
+                        @endif
+                    </button>
+
+                    @if (isset($task))
+                        <a href="{{ url('/') }}" class="btn-cancel">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </a>
+                    @endif
+                </form>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-heading">Current Tasks</div>
+
+            <div class="panel-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Task</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @forelse ($tasks as $taskItem)
+                            <tr>
+                                <td>{{ $taskItem->name }}</td>
+
+                                <td>
+                                    <form action="/delete/{{ $taskItem->id }}" method="POST" class="d-inline">
+                                        @csrf
+
+                                        <button type="submit" class="btn-delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                            Delete
+                                        </button>
+                                    </form>
+
+                                    <form action="/edit/{{ $taskItem->id }}" method="POST" class="action-form">
+                                        @csrf
+
+                                        <button type="submit" class="btn btn--info">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            Edit
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="2" class="empty-message">
+                                    No tasks found.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
     </div>
-
-  </div>
 
 </body>
+
 </html>

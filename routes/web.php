@@ -38,7 +38,8 @@ Route::post('/about', function (Request $request) {
     ]);
 });
 Route::get('tasks', function () {
-    return view('tasks');
+    $tasks = DB::table(table:'tasks')->get();
+    return view('tasks',data :compact(var_name:'tasks'));
 });
 
 Route::post('create', function () {
@@ -49,7 +50,40 @@ Route::post('create', function () {
         'name' => $task_name
     ]);
 
-    return view('tasks');
+    return redirect()->back();
 
+});
+
+Route::post('delete/{id}', function ($id) {
+
+    DB::table('tasks')
+        ->where('id', $id)
+        ->delete();
+
+    return redirect()->back();
+
+});
+
+Route::post('edit/{id}', function ($id) {
+
+    $task = DB::table('tasks')
+        ->where('id', $id)
+        ->first();
+
+    $tasks = DB::table('tasks')
+        ->get();
+
+    return view('tasks', compact('task', 'tasks'));
+
+});
+
+Route::post('/update', function () {
+    DB::table('tasks')
+        ->where('id', request('id'))
+        ->update([
+            'name' => request('name'),
+        ]);
+
+    return redirect('/tasks');
 });
 
